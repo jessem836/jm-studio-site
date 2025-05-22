@@ -20,7 +20,7 @@
         <p>
           An action rogue-like space-shooting game.
         </p>
-        <a href="/jm-studio-site/games" class="text-blue-400 hover:underline">Learn more →</a>
+        <router-link to="/games" class="btn-primary">Learn more →</router-link>
       </div>
     </section>
 
@@ -72,7 +72,6 @@
       <p>© 2025 Jesse Mota</p>
       <div class="link-buttons">
         <a href="https://github.com/jessem836/" target="_blank" class="hover:text-white">GitHub</a>
-        <a href="jessemota836@gmail.com" class="hover:text-white">Email</a>
       </div>
     </footer>
   </main>
