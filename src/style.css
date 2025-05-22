@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -34,7 +32,27 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+.home-headers {
+  padding-top: 2em;
+}
 
+.link-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-snapshot {
+  display: flex;
+  gap: 8rem;
+  text-align: center;
+  flex-direction: row;
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -54,14 +72,21 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0px 100px;
+}
 .card {
   padding: 2em;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+  max-width: 100%;
+  margin: 0 ;
   text-align: center;
 }
 
