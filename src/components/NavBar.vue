@@ -5,8 +5,8 @@
       
     </div>
     <div class="nav-links">
-      <router-link to="/about">About Me</router-link>
       <router-link to="/games">Hoots Games</router-link>
+      <router-link to="/gallery">Gallery</router-link>
     </div>
   </nav>
 </template>

@@ -102,3 +102,30 @@ main {
     background-color: #f9f9f9;
   }
 }
+
+.img_home {
+    width: 85%;
+    transition: transform .2s ease;
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    margin-bottom: 1.5%;
+  }
+
+  .img_home:hover {
+    transform: scale(1.25);
+  }
+
+  .overlay-text {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .home_images {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+  }
