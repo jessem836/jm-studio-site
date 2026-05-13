@@ -15,7 +15,7 @@
         </p>
         <div class="hero-cta">
           <RouterLink to="/earthborn" class="btn btn-primary">Earthborn Evo ↗</RouterLink>
-          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+          <button class="btn btn-ghost" @click="scrollToContact">Contact Me</button>
         </div>
       </div>
       <div class="hero-scroll-hint">
@@ -142,6 +142,11 @@
 </template>
 
 <script setup>
+
+function scrollToContact() {
+  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+}
+
 const skills = [
   {  name: 'B.S. Computer Science',  category: 'Education' },
   {  name: 'ITIL 4 Certified',      category: 'Certification' },
@@ -152,6 +157,13 @@ const skills = [
   {  name: 'IT Tech Support',        category: 'Experience' },
   {  name: 'Ticket Systems, A.I.',          category: 'Systems' },
 ]
+
+function scrollToBottom() {
+  window.scrollTo({
+    top:document.body.scrollHeight,
+    behavior: 'smooth'
+  });
+}
 </script>
 
 <style scoped>
