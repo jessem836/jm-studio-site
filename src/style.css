@@ -1,131 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg:          #07090d;
+  --bg-surface:  #0d1017;
+  --bg-elevated: #121826;
+  --border:      #1c2336;
+  --border-mid:  #2a3550;
+  --accent:        #2b96ff;
+  --accent-dim:    rgba(43, 150, 255, 0.1);
+  --accent-glow:   rgba(43, 150, 255, 0.3);
+  --accent-bright: #5aadff;
+  --text:        #d8e0f0;
+  --text-muted:  #8892aa;
+  --text-dim:    #4a5470;
+  --radius:      5px;
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-.home-headers {
-  padding-top: 2em;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
 }
 
-.link-buttons {
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-bright); }
+
+img { max-width: 100%; display: block; }
+
+ul { list-style: none; }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Sections ─────────────────────────────────────────────── */
+.section { padding: 6rem 0; }
+
+.section-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.skills {
-  display: flex;
-  flex-direction: column;
-}
-
-.skills-snapshot {
-  display: flex;
-  gap: 8rem;
-  text-align: center;
-  flex-direction: row;
-}
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  padding: 0px 100px;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
 }
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  transition: all 0.2s var(--ease);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: var(--accent-bright);
+  box-shadow: 0 4px 24px var(--accent-glow);
+  color: #ffffff;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-mid);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Cards ────────────────────────────────────────────────── */
 .card {
-  padding: 2em;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: all 0.25s var(--ease);
+}
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 28px var(--accent-dim), 0 4px 20px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
 }
 
-#app {
-
-  max-width: 100%;
-  margin: 0 ;
-  text-align: center;
+/* ── Divider ──────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-mid), transparent);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
 
-.img_home {
-    width: 85%;
-    transition: transform .2s ease;
-    border: 1.5px solid rgb(255, 255, 255);
-    border-radius: 12px;
-    margin-bottom: 1.5%;
-  }
+/* ── Page transitions ─────────────────────────────────────── */
+.fade-enter-active,
+.fade-leave-active { transition: opacity 0.25s var(--ease), transform 0.25s var(--ease); }
+.fade-enter-from,
+.fade-leave-to { opacity: 0; transform: translateY(8px); }
 
-  .img_home:hover {
-    transform: scale(1.25);
-  }
-
-  .overlay-text {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    text-align: center;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .home_images {
-    display: flex;
-    flex-direction: row;
-    padding: 2%;
-  }
+/* ── Utility ──────────────────────────────────────────────── */
+.text-accent  { color: var(--accent); }
+.text-muted   { color: var(--text-muted); }
+.text-dim     { color: var(--text-dim); }
+.font-display { font-family: 'Rajdhani', sans-serif; }
+.fw-700       { font-weight: 700; }

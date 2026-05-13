@@ -1,0 +1,417 @@
+<template>
+  <main>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="personal-hero">
+      <div class="ph-grid"></div>
+      <div class="container ph-content">
+        <h1 class="ph-title">Personal</h1>
+        <p class="ph-sub">What I like to do outside of work and game development.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ ABOUT ═══════════════ -->
+    <section class="section">
+      <div class="container">
+        <p class="section-label">personal</p>
+        <h2 class="section-title">Hobbies</h2>
+        <div class="about-extended">
+          <div class="about-block">
+            <h3 class="about-block-title">National Parks</h3>
+            <p>
+              I am by no means a photographer, but I have always wanted to see all the National Parks with my significant other. So far, as of writing this, 
+              I have visited all the parks in Arizona and Washington.
+            </p>
+            <p>
+              Out of the 6 I have visited, Mount Rainier is by far my favorite and recommend anyone visit it. Below are some images I captured on my travels.
+            </p>
+          </div>
+          <div class="about-block">
+            <h3 class="about-block-title">Warhammer 40K</h3>
+            <p>
+              Another hobby I enjoy is anything Warhammer 40K. Warhammer is a sci-fi fantasy universe in the grim far distant future. 
+            </p>
+            <p>
+              I enjoy reading books about the lore and history of the universe. My favorite books are the Night Lord omnibus, following the 
+              traitorous Night Lords as the try to survive in a hostile galaxy. Another aspect I enjoy is minifig painting, below are some images of that.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- ═══════════════ NATIONAL PARKS ═══════════════ -->
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Photography</p>
+        <h2 class="section-title">National Parks</h2>
+        <p class="gallery-intro">
+          Highlights of my favorite pictures taken at various National Parks.
+        </p>
+
+        <div class="photo-filter">
+          <button
+            v-for="park in parkFilters"
+            :key="park"
+            class="filter-btn"
+            :class="{ active: activePark === park }"
+            @click="activePark = park"
+          >{{ park }}</button>
+        </div>
+
+        <div class="photo-grid">
+          <div
+            v-for="(photo, i) in filteredParks"
+            :key="i"
+            class="photo-card"
+            @click="openLightbox(photo)"
+          >
+            <div class="photo-placeholder">
+             <img :src="photo.src" :alt="photo.title" class="photo-placeholder" />
+            </div>
+            <div class="photo-overlay">
+              <span class="photo-name">{{ photo.title }}</span>
+              <span class="photo-park">{{ photo.park }}</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="photo-note">
+          View the full gallery <a href="https://drive.google.com/drive/folders/1qRQXx95F7FTv0aPTb5pvRY5adtUkyJJx?usp=sharing">here!</a> <em>Note: I am not a professional photographer</em>
+        </p>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- ═══════════════ MINIFIGS ═══════════════ -->
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Collection</p>
+        <h2 class="section-title">Minifigs</h2>
+        <p class="gallery-intro">
+          A small selection of painted minifigs.
+        </p>
+        <div class="photo-grid minifig-grid">
+          <div
+            v-for="(fig, i) in minifigs"
+            :key="i"
+            class="photo-card"
+          >
+            <div class="photo-placeholder">
+              <img :src="fig.src" :alt="fig.name" class="photo-placeholder" />
+            </div>
+            <div class="photo-overlay">
+              <span class="photo-name">{{ fig.name }}</span>
+              <span class="photo-park">{{ fig.theme }}</span>
+            </div>
+          </div>
+            <p class="photo-note">
+            More on <a href="instagram.com/hootspaint/">Instagram!</a>
+            </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ LIGHTBOX ═══════════════ -->
+    <Transition name="lb">
+      <div v-if="lightbox" class="lightbox" @click="lightbox = null">
+        <div class="lightbox-inner" @click.stop>
+          <div class="lightbox-img-wrap">
+            <div class="lb-placeholder">
+              <img :src="lightbox.src" :alt="lightbox.title" class="photo-placeholder" />
+              <p>{{ lightbox.title }}</p>
+              <p style="font-size:0.8rem;color:var(--text-dim);">{{ lightbox.park }}</p>
+            </div>
+          </div>
+          <button class="lb-close" @click="lightbox = null">✕</button>
+        </div>
+      </div>
+    </Transition>
+
+  </main>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+
+const activePark = ref('All')
+const lightbox   = ref(null)
+
+const parkPhotos = [
+  { title: 'Sunrise',          park: 'Mt. Rainier',         src: new URL('/img/parks/Rainier_3.jpg', import.meta.url).href },
+  { title: 'Paradise',         park: 'Mt. Rainier',         src: new URL('/img/parks/Rainier_2.jpg', import.meta.url).href },
+  { title: 'Saguaro West',     park: 'Saguaro',             src: new URL('/img/parks/Saguaro_2.jpg', import.meta.url).href },
+  { title: 'Blue Mesa',        park: 'Petrified Forest',    src: new URL('/img/parks/Petrified_1.jpg', import.meta.url).href },
+  { title: 'Huricane Ridge',   park: 'Olympic',             src: new URL('/img/parks/Olympic_1.jpg', import.meta.url).href   },
+  { title: 'Sol Duc',          park: 'Olympic',             src: new URL('/img/parks/Olympic_2.jpg', import.meta.url).href   },
+  { title: 'Grandeur Point',   park: 'Grand Canyon',        src: new URL('/img/parks/GrandCanyon_1.jpg', import.meta.url).href   },
+  { title: 'Diablo Lake',      park: 'North Cascades',      src: new URL('/img/parks/Cascades_2.jpg', import.meta.url).href   },
+  { title: 'Paradise',         park: 'Mt. Rainier',         src: new URL('/img/parks/Rainier_1.jpg', import.meta.url).href   },
+  { title: 'Diablo Lake',      park: 'North Cascades',      src: new URL('/img/parks/Cascades_3.jpg', import.meta.url).href   }, 
+  { title: 'Saguaro West',     park: 'Saguaro',             src: new URL('/img/parks/Saguaro_1.jpg', import.meta.url).href   },
+  { title: 'Diablo Lake',      park: 'North Cascades',      src: new URL('/img/parks/Cascades_1.jpg', import.meta.url).href  },
+  { title: 'Mather Point',     park: 'Grand Canyon',        src: new URL('/img/parks/GrandCanyon_2.jpg', import.meta.url).href },
+  { title: 'Painted Desert',   park: 'Petrified Forest',    src: new URL('/img/parks/Petrified_2.jpg', import.meta.url).href }
+]
+
+const parkFilters = computed(() => {
+  const tags = [...new Set(parkPhotos.map(p => p.park))]
+  return ['All', ...tags]
+})
+
+const filteredParks = computed(() =>
+  activePark.value === 'All'
+    ? parkPhotos
+    : parkPhotos.filter(p => p.park === activePark.value)
+)
+
+const minifigs = [
+  { name: '1st Claw',                     theme: 'Night Lords',               src: new URL('/img/figures/NL_3.jpg', import.meta.url).href },
+  { name: 'Heavy Lokhust Destroyer',      theme: 'Necrons',                   src: new URL('/img/figures/Necron_1.jpg', import.meta.url).href },
+  { name: 'Talos Valcoran',               theme: 'Night Lords',               src: new URL('/img/figures/Talos_1.jpg', import.meta.url).href },
+  { name: 'Exultia Skirmish',             theme: 'Necron & Night Lords',      src: new URL('/img/figures/NL_2.jpg', import.meta.url).href },
+]
+
+function openLightbox(photo) { lightbox.value = photo }
+</script>
+
+<style scoped>
+/* ── Page Hero ─────────────────────────────────────────────── */
+.personal-hero {
+  position: relative;
+  min-height: 45vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+.ph-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 100%, transparent 20%, black 70%);
+}
+.ph-content { position: relative; z-index: 1; padding-top: 8rem; }
+.ph-title {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0.4rem 0 0.6rem;
+}
+.ph-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── About Extended ────────────────────────────────────────── */
+.about-extended {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+.about-block {}
+.about-block-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.about-block p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.about-block p:last-child { margin-bottom: 0; }
+.about-block em { color: var(--text); font-style: normal; }
+
+/* ── Gallery ───────────────────────────────────────────────── */
+.gallery-intro {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin-bottom: 1.75rem;
+  line-height: 1.7;
+}
+.gallery-intro code {
+  font-family: 'Fira Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* ── Filter ────────────────────────────────────────────────── */
+.photo-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+}
+.filter-btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── Photo Grid ────────────────────────────────────────────── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.minifig-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.photo-card {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.25s ease;
+}
+.photo-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+.photo-card:hover .photo-overlay { opacity: 1; }
+
+.photo-placeholder {
+  width: 100%; height: 100%;
+  background: var(--bg-elevated);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.photo-placeholder-icon { font-size: 2.5rem; }
+.photo-placeholder-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(7,9,13,0.9), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.photo-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.photo-park {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.photo-note {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.photo-note code {
+  font-family: 'Fira Mono', monospace;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+/* ── Lightbox ──────────────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(7,9,13,0.92);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox-inner {
+  position: relative;
+  max-width: 875px;
+  width: 100%;
+}
+.lightbox-img-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1.5px solid var(--border-mid);
+}
+.lb-placeholder {
+  aspect-ratio: 16/9;
+  background: var(--bg-elevated);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  color: var(--text-muted);
+}
+.lb-close {
+  position: absolute;
+  top: -2.5rem; right: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.lb-close:hover { color: var(--accent); }
+
+.lb-enter-active, .lb-leave-active { transition: opacity 0.2s ease; }
+.lb-enter-from, .lb-leave-to { opacity: 0; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .about-extended { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+</style>
