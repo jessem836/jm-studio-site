@@ -1,25 +1,15 @@
 <template>
   <main>
-
-    <!-- ═══════════════ HERO ═══════════════ -->
-    <section class="hero">
-      <div class="hero-grid-bg"></div>
-      <div class="hero-glow"></div>
-      <div class="container hero-content">
+ <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="personal-hero">
+      <div class="ph-grid"></div>
+      <div class="container ph-content">
         <p class="hero-eyebrow">Welcome to my site!</p>
-        <h1 class="hero-title">Jesse Mota</h1>
-        <p class="hero-sub">Game Developer&nbsp;&nbsp;·&nbsp;&nbsp;IT&nbsp;&nbsp;·&nbsp;&nbsp;Student</p>
+        <h1 class="ph-title">Jesse Mota</h1>
+        <p class="ph-sub">Game Developer&nbsp;&nbsp;·&nbsp;&nbsp;IT&nbsp;&nbsp;·&nbsp;&nbsp;Student</p>
         <p class="hero-body">
-          B.S. in Computer Science. Building an arcade roguelike in Unreal Engine.
-          Passionate about IT, game development, minifigs, and the great outdoors.
+          An aspiring game developer and student of computer science, trying to break into the IT industry and share my journey along the way.
         </p>
-        <div class="hero-cta">
-          <RouterLink to="/earthborn" class="btn btn-primary">Earthborn Evo ↗</RouterLink>
-          <button class="btn btn-ghost" @click="scrollToContact">Contact Me</button>
-        </div>
-      </div>
-      <div class="hero-scroll-hint">
-        <span></span>
       </div>
     </section>
 
@@ -32,14 +22,13 @@
             <h2 class="section-title">Who I Am</h2>
             <p class="about-body">
              I am currently a student at Western Governors University, pursuing a bachelor's degree in Computer Science. 
-             So far, I am certified in LPI Linux and ITIL 4. My next goal is to become CompTIA Security+ certified. 
-             I am also a self-taught game developer, building Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
-             Currently, I am employed at ThredUP as an IT Tech Support Technician, handling tickets submitted by warehouse associates and managers, as well as ensuring all applications and computers are up to date and running.
-              
-            </p>
-            <p class="about-body" style="margin-top: 1rem;">
-              Outside of work you'll find me hiking through National Parks, painting and reading about Warhammer 40K, collecting CDs, or taking 
-              care of my pet bunny and aquarium.
+             So far, I am certified in LPI Linux and ITIL 4. My next goal is to become CompTIA Security+ certified. I am also a self-taught 
+             game developer, creating Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
+             <br><br>
+             Currently, I am employed at ThredUP as an IT Tech Support Technician, 
+             handling tickets submitted by warehouse associates and managers, as well as ensuring all applications and computers are up to date and running.
+            <br><br>
+             I am passionate about learning and growing in the IT and game development fields, and I am excited to share my journey with you through this site.
             </p>
           </div>
           <div class="about-aside">
@@ -157,51 +146,44 @@ const skills = [
   {  name: 'IT Tech Support',        category: 'Experience' },
   {  name: 'Ticket Systems, A.I.',          category: 'Systems' },
 ]
-
-function scrollToBottom() {
-  window.scrollTo({
-    top:document.body.scrollHeight,
-    behavior: 'smooth'
-  });
-}
 </script>
 
 <style scoped>
 /* ── Hero ──────────────────────────────────────────────────── */
-.hero {
+.personal-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 45vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  padding-bottom: 4rem;
   overflow: hidden;
 }
-
-.hero-grid-bg {
+.ph-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(28, 35, 54, 0.45) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 35, 54, 0.45) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse at 40% 50%, transparent 20%, black 80%);
+    linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 100%, transparent 20%, black 70%);
 }
-
-.hero-glow {
-  position: absolute;
-  width: 60vw; height: 60vw;
-  max-width: 700px; max-height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(43,150,255,0.07) 0%, transparent 70%);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+.ph-content { 
+position: relative; z-index: 1; padding-top: 8rem; 
 }
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  padding-top: 7rem;
-  padding-bottom: 5rem;
+.ph-title {
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  font-weight: 625;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.ph-sub {
+ font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
 }
 
 .hero-eyebrow {
@@ -213,53 +195,7 @@ function scrollToBottom() {
   margin-bottom: 0.5rem;
 }
 
-.hero-title {
-  font-size: clamp(3.5rem, 9vw, 7rem);
-  font-weight: 700;
-  line-height: 1;
-  color: var(--text);
-  margin-bottom: 1rem;
-  letter-spacing: -0.01em;
-}
 
-.hero-sub {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.hero-body {
-  max-width: 520px;
-  color: var(--text-muted);
-  font-size: 1rem;
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 2.5rem; left: 50%;
-  transform: translateX(-50%);
-}
-.hero-scroll-hint span {
-  display: block;
-  width: 1px; height: 48px;
-  background: linear-gradient(to bottom, transparent, var(--border-mid));
-  margin: 0 auto;
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 0.8; transform: scaleY(1.2); }
-}
 
 /* ── About ─────────────────────────────────────────────────── */
 .about-grid {

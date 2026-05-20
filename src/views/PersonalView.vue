@@ -2,11 +2,15 @@
   <main>
 
     <!-- ═══════════════ HERO ═══════════════ -->
-    <section class="personal-hero">
+<section class="personal-hero">
       <div class="ph-grid"></div>
       <div class="container ph-content">
+        <p class="hero-eyebrow">More about me</p>
         <h1 class="ph-title">Personal</h1>
-        <p class="ph-sub">What I like to do outside of work and game development.</p>
+        <p class="hero-body">
+          A more personal look into my hobbies and interests outside of game development and IT. I am a metal music 
+          enthusiast, music CD collector, national park explorer, and a minifig painter. I also have a soft spot for sci-fi or dark fantasy, both in books and games.
+        </p>
       </div>
     </section>
 
@@ -20,7 +24,11 @@
             <h3 class="about-block-title">National Parks</h3>
             <p>
               I am by no means a photographer, but I have always wanted to see all the National Parks with my significant other. So far, as of writing this, 
-              I have visited all the parks in Arizona and Washington.
+              I have visited all the parks in Arizona and Washington. 
+              <br><br>
+              Next on my list are Zion and Bryce Canyon National Parks, located in Utah. With 
+              Glacier National Park or Yellowstone and Teton National Park being next after that. 
+              I have a long way to go, but I am excited to see more of the beautiful nature this country has to offer.
             </p>
             <p>
               Out of the 6 I have visited, Mount Rainier is by far my favorite and recommend anyone visit it. Below are some images I captured on my travels.
@@ -29,11 +37,15 @@
           <div class="about-block">
             <h3 class="about-block-title">Warhammer 40K</h3>
             <p>
-              Another hobby I enjoy is anything Warhammer 40K. Warhammer is a sci-fi fantasy universe in the grim far distant future. 
+              Another hobby I enjoy is anything Warhammer 40K. Warhammer is a sci-fi fantasy universe set in the grim far distant future of the year
+              40,000. 
             </p>
             <p>
-              I enjoy reading books about the lore and history of the universe. My favorite books are the Night Lord omnibus, following the 
-              traitorous Night Lords as the try to survive in a hostile galaxy. Another aspect I enjoy is minifig painting, below are some images of that.
+              I enjoy reading books about the lore and history of the universe. My favorite books is the Night Lord omnibus, following the 
+              traitorous Night Lords as they try to survive in a hostile galaxy. 
+              <br> <br>
+              Another aspect I enjoy is minifig painting, below are some images of figures I have painted. 
+              I also have a large collection of unpainted figures that I hope to get to one day.
             </p>
           </div>
         </div>
@@ -109,7 +121,7 @@
             </div>
           </div>
             <p class="photo-note">
-            More on <a href="instagram.com/hootspaint/">Instagram!</a>
+            More on <a href="https://www.instagram.com/hootspaint/">Instagram!</a>
             </p>
         </div>
       </div>
@@ -180,6 +192,14 @@ function openLightbox(photo) { lightbox.value = photo }
 
 <style scoped>
 /* ── Page Hero ─────────────────────────────────────────────── */
+.hero-eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
 .personal-hero {
   position: relative;
   min-height: 45vh;
@@ -192,14 +212,14 @@ function openLightbox(photo) { lightbox.value = photo }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
+  linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse at 50% 100%, transparent 20%, black 70%);
 }
 .ph-content { position: relative; z-index: 1; padding-top: 8rem; }
 .ph-title {
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-size: clamp(2.5rem, 7vw, 5rem);
   font-weight: 700;
   color: var(--text);
   margin: 0.4rem 0 0.6rem;

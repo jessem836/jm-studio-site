@@ -3,15 +3,15 @@
 
     <!-- ═══════════════ HERO ═══════════════ -->
     <section class="eb-hero">
-      <div class="eb-hero-grid"></div>
-      <div class="eb-hero-glow"></div>
+      <div class="eb-hero-grid">
+      </div>
       <div class="container eb-hero-content">
         <h1 class="eb-title">EARTHBORN EVO</h1>
         <p class="eb-tagline">Top-Down Arcade · Roguelike · Endless Combat · Sci-Fi</p>
         <p class="eb-desc">
-          Humanity is fighting a war against the Xiual Mind. Take flight and collect powerful
+          Humanity is fighting a war against the Xiual Mind, an ancient psychic xenos race. Take flight and collect powerful
           Shards, adapt your build each run, and push further towards the Conduit.
-          The United Earthborn Systems needs your help...
+  
         </p>
         <div class="eb-status">
           <span class="status-dot"></span>
@@ -26,17 +26,20 @@
         <p class="section-label">Lore</p>
         <h2 class="section-title">The Story So Far</h2>
         <p class="mech-body">
-          In the far future, where humanity, united after a near-extinction nuclear war in 2100, built a Solar System empire 
-          and eventually a galactic one after discovering Psionic Energy, a psychic force of unknown origin, and using it to develop the Jump-Drive, 
-          enabling faster-than-light travel across the Milky Way. What humanity never knew was that this energy wasn't a natural phenomenon, 
-          it was the ambient output of the Xiual Gestalt Consciousness, an ancient alien hive mind from Andromeda that had long ago voluntarily 
-          abandoned their physical bodies, uploading their souls into a megastructure known as the Conduit to exist as a unified gestalt consciousness. 
-          Every Jump-Drive activation humanity created sent psychic shockwaves rippling back toward the Conduit, and after centuries of expansion, 
-          The accumulated backlash tore through the Xiual like a storm, annihilating a majority of all Xiual souls forever.
-          The Xiual located the source of the disturbance and sent a response. The War of Extinction began without a word, without an ultimatum.
-          Struggling against a technologically and psychically superior enemy, UES High Command launched Project: Evo: 
-          One hundred pilots in experimental fighters built from salvaged Xiual technology, paired with the sapient 
-          AI co-pilot VISAR, armed with weaponized Psionic Energy and a single objective: find the Conduit deep in Andromeda and destroy it.
+          In the nuclear fires of an atomic war in the 2100s, the surviving nations of the world united to bring unity, progress, and enlightenment. 
+          Centuries later, humanity had built a solar empire and, after discovering an unknown phenomenon known as Psionic Energy, created the Jump-Drive, allowing 
+          for galactic travel by harnessing this psychic energy to create wormholes in the fabric of space. Soon, the United Earthborn Systems had begun colonizing the 
+          Milky Way galaxy. 
+          <br> <br>
+          Unbeknownst to humanity, the source of this energy was permeating from an alien megastructure known as the Conduit. 
+          Within this great machine lay the trillions of minds and souls of the Xiual, a psychic alien race who had uploaded their souls into the Conduit, creating a 
+          gestalt consciousness.
+          <br> <br>
+          With the rampant use of the Jump-Drive across long distances, a psychic backlash tore through the Xiual, annihilating a majority of their minds. 
+          The Xiual thus began the invasion of the Milky Way to defend themselves from an existential threat. Struggling against a 
+          technologically and psychically superior enemy, UES High Command launched Project: Evo: One hundred pilots in experimental fighters built 
+          from salvaged Xiual technology, paired with the sapient AI co-pilot VISAR, armed with weaponized Psionic Energy and a single objective: find 
+          the Conduit deep in Andromeda and destroy it.
         </p>
       </div>
     </section>
@@ -153,17 +156,7 @@ const screenshots = [
   position: absolute;
   inset: 0;
   background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 15%),url("/img/EE_BG.JPG");
- 
-  
   mask-image: radial-gradient(ellipse at 30% 50%, transparent 0%, black 70%);
-}
-
-.eb-hero-glow {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 15% 60%, rgba(43,150,255,0.07) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 30%, rgba(60, 80, 180, 0.08) 0%, transparent 50%);
 }
 
 .eb-hero-content {
