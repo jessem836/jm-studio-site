@@ -11,12 +11,7 @@
         <p class="eb-desc">
           Humanity is fighting a war against the Xiual Mind, an ancient psychic xenos race. Take flight and collect powerful
           Shards, adapt your build each run, and push further towards the Conduit.
-  
         </p>
-        <div class="eb-status">
-          <span class="status-dot"></span>
-          <span>In active development — Unreal Engine 5</span>
-        </div>
       </div>
     </section>
     
@@ -96,7 +91,7 @@
           Screenshots from each Dev Note, with the most recent at the top.
         </p>
         <div class="sc-chips">
-          <p class="devnotes-placeholder">Solar Hazard Level WIP</p>
+          <p class="devnotes-placeholder">First Dev Note Screenshot</p>
           <img src="/img/DevImg_1.jpg" alt="Dev Note 1">
         </div>
       </div>
@@ -155,8 +150,7 @@ const screenshots = [
 .eb-hero-grid {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 15%),url("/img/EE_BG.JPG");
-  mask-image: radial-gradient(ellipse at 30% 50%, transparent 0%, black 70%);
+  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 25%),url("/img/EE_BG.JPG");
 }
 
 .eb-hero-content {
@@ -192,29 +186,6 @@ const screenshots = [
   margin-bottom: 2rem;
 }
 
-.eb-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  
-  
-
-  border: 1px solid var(--border);
-  border-color: aliceblue;
-  border-radius: 100px;
-  padding: 0.4rem 1rem;
-}
-.status-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #6eff73;
-  box-shadow: 0 0 8px #4caf50;
-  animation: pulse 2s ease-in-out infinite;
-}
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }

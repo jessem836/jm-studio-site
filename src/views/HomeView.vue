@@ -109,7 +109,7 @@
           <p class="section-label">Get In Touch</p>
           <h2 class="section-title">Contact</h2>
           <p class="contact-sub">
-            Have a question, want to collaborate, or want to contact me?
+            Have a question or want to get in touch?
           </p>
           <div class="contact-links">
             <a href="mailto:your@email.com" class="contact-link">
@@ -131,10 +131,6 @@
 </template>
 
 <script setup>
-
-function scrollToContact() {
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-}
 
 const skills = [
   {  name: 'B.S. Computer Science',  category: 'Education' },
@@ -165,7 +161,6 @@ const skills = [
     linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
     linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
   background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at 50% 100%, transparent 20%, black 70%);
 }
 .ph-content { 
 position: relative; z-index: 1; padding-top: 8rem; 

@@ -41,7 +41,7 @@
               40,000. 
             </p>
             <p>
-              I enjoy reading books about the lore and history of the universe. My favorite books is the Night Lord omnibus, following the 
+              I enjoy reading books about the lore and history of the universe. My favorite book is the Night Lord omnibus, following the 
               traitorous Night Lords as they try to survive in a hostile galaxy. 
               <br> <br>
               Another aspect I enjoy is minifig painting, below are some images of figures I have painted. 
@@ -215,7 +215,6 @@ function openLightbox(photo) { lightbox.value = photo }
   linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
   linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
   background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at 50% 100%, transparent 20%, black 70%);
 }
 .ph-content { position: relative; z-index: 1; padding-top: 8rem; }
 .ph-title {
