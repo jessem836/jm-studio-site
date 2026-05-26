@@ -16,26 +16,22 @@
     </section>
     
   <!-- ═══════════════ LORE  ═══════════════ -->
+
     <section class="section">
       <div class="container">
         <p class="section-label">Lore</p>
-        <h2 class="section-title">The Story So Far</h2>
-        <p class="mech-body">
-          In the nuclear fires of an atomic war in the 2100s, the surviving nations of the world united to bring unity, progress, and enlightenment. 
-          Centuries later, humanity had built a solar empire and, after discovering an unknown phenomenon known as Psionic Energy, created the Jump-Drive, allowing 
-          for galactic travel by harnessing this psychic energy to create wormholes in the fabric of space. Soon, the United Earthborn Systems had begun colonizing the 
-          Milky Way galaxy. 
-          <br> <br>
-          Unbeknownst to humanity, the source of this energy was permeating from an alien megastructure known as the Conduit. 
-          Within this great machine lay the trillions of minds and souls of the Xiual, a psychic alien race who had uploaded their souls into the Conduit, creating a 
-          gestalt consciousness.
-          <br> <br>
-          With the rampant use of the Jump-Drive across long distances, a psychic backlash tore through the Xiual, annihilating a majority of their minds. 
-          The Xiual thus began the invasion of the Milky Way to defend themselves from an existential threat. Struggling against a 
-          technologically and psychically superior enemy, UES High Command launched Project: Evo: One hundred pilots in experimental fighters built 
-          from salvaged Xiual technology, paired with the sapient AI co-pilot VISAR, armed with weaponized Psionic Energy and a single objective: find 
-          the Conduit deep in Andromeda and destroy it.
+        <h2 class="section-title">Earthborn Evo Codex</h2>
+          
+        <RouterLink to="/codex" class="preview-card preview-game">
+            <div class="preview-tag">Archives and Enemy Codex</div>
+            <h3 class="preview-title">The Codex</h3>
+            <p class="preview-body">
+              Explore the Codex, a compendium of lore entries, enemy profiles, and world-building details that expand on the Earthborn Evo universe. 
+              Dive into the history of the Xiual Mind, the United Earthborn Systems, or uncover the secrets of the Conduit. 
+              The Codex also contains detailed profiles of the various enemy types and their mechanics and stats.
         </p>
+            <span class="preview-cta">Lore and Codex Entries →</span>
+          </RouterLink>
       </div>
     </section>
 
@@ -138,6 +134,69 @@ const screenshots = [
 </script>
 
 <style scoped>
+.previews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.25rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.preview-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.preview-card:hover::before { opacity: 1; }
+.preview-tag {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.preview-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.preview-body {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  flex: 1;
+}
+.preview-cta {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+  transition: gap 0.2s;
+}
+
 /* ── Game Hero ─────────────────────────────────────────────── */
 .eb-hero {
   position: relative;
@@ -150,7 +209,7 @@ const screenshots = [
 .eb-hero-grid {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 25%),url("/img/EE_BG.JPG");
+  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 33%),url("/img/EE_BG.JPG");
 }
 
 .eb-hero-content {

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer-inner">
         <span class="footer-brand">JM<span class="dot">.</span></span>
-        <p class="footer-copy">© {{ year }} Jesse M. and Hoots Games | Built with Vue 3 + Vite.</p>
+        <p class="footer-copy">Jesse M. and Hoots Games | Built with Vue 3 + Vite.</p>
         <div class="footer-links">
           <a href="https://github.com/jessem836" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -11,10 +11,6 @@
     </div>
   </footer>
 </template>
-
-<script setup>
-const year = new Date().getFullYear()
-</script>
 
 <style scoped>
 .site-footer {
