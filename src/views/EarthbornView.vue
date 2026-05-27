@@ -209,7 +209,7 @@ const screenshots = [
 .eb-hero-grid {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 33%),url("/img/EE_BG.JPG");
+  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 25%),url("/img/EE_BG.JPG");
 }
 
 .eb-hero-content {

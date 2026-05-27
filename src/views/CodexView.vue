@@ -323,7 +323,7 @@ const enemies = [
     tier: 'Medium',
     img: new URL('/img/enemies/Napalu.png', import.meta.url).href,
     stats: [
-      { label: 'HP',         value: 75 },
+      { label: 'HP',        value: 100 },
       { label: 'Armor',      value: 33 },
       { label: 'Damage',     value: 75 },
       { label: 'Firerate',   value:  0 },
@@ -403,7 +403,7 @@ function selectEnemy(enemy) {
 .codex-hero-grid {
 position: absolute;
   inset: 0;
-  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 50%),url("/img/Codex.JPG");
+  background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 25%),url("/img/Codex.JPG");
 }
 .codex-hero-content { position: relative; z-index: 1; padding-top: 8rem; }
 .codex-title {

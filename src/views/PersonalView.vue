@@ -91,7 +91,7 @@
         </div>
 
         <p class="photo-note">
-          View the full gallery <a href="https://drive.google.com/drive/folders/1qRQXx95F7FTv0aPTb5pvRY5adtUkyJJx?usp=sharing">here!</a> <em>Note: I am not a professional photographer</em>
+          View the full gallery <a href="https://drive.google.com/drive/folders/1qRQXx95F7FTv0aPTb5pvRY5adtUkyJJx?usp=sharing" target="_blank">here!</a> <em>Note: I am not a professional photographer</em>
         </p>
       </div>
     </section>
@@ -121,7 +121,7 @@
             </div>
           </div>
             <p class="photo-note">
-            More on <a href="https://www.instagram.com/hootspaint/">Instagram!</a>
+            More on <a href="https://www.instagram.com/hootspaint/" target="_blank">Instagram!</a>
             </p>
         </div>
       </div>
