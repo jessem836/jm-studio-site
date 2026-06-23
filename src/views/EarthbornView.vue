@@ -82,12 +82,14 @@
     <section class="section eb-sc-section">
       <div class="container">
         <p class="section-label">Screenshots</p>
-        <h2 class="section-title">Latest Builds</h2>
+        <h2 class="section-title">Images for Dev Notes</h2>
         <p class="dev-intro">
           Screenshots from each Dev Note, with the most recent at the top.
         </p>
         <div class="sc-chips">
-          <p class="devnotes-placeholder">First Dev Note Screenshot</p>
+          <p class="devnotes-placeholder">Command Center for Achievements and the Shop</p>
+          <img src="/img/DevImg_2.jpg" alt="Dev Note 2">
+          <p class="devnotes-placeholder">Solar Hazard Environment</p>
           <img src="/img/DevImg_1.jpg" alt="Dev Note 1">
         </div>
       </div>
@@ -114,6 +116,12 @@ const mechanics = [
 ]
 
 const devNotes = [
+ {
+    date: 'June 2026',
+    tag: 'Progression',
+    title: 'Achievements and the Shop',
+    body: 'I have recently begun adding Achievements and the Shop (name pending) to the game. Achievements are permanent unlocks that can be earned by completing specific objectives, while the Shop allows you to purchase ships, shields, and upgrades. So far the new menu where you can view your Achievements and access the Shop is complete. Achievements requires integration with Steam, so Earthborn Evo will officially be on Steam when the Achievements are complete (but not available yet).',
+  },
   {
     date: 'May 2026',
     tag: 'Anniversary',
@@ -126,10 +134,6 @@ const devNotes = [
     title: 'Development Begins',
     body: 'Following inspiration from the original Earthborn Evolution, https://www.construct.net/en/free-online-games/earthborn-evolution-1164/play, development for its remake / sequel  has begun under Hoots Games.', 
   }
-]
-
-const screenshots = [
-  
 ]
 </script>
 
