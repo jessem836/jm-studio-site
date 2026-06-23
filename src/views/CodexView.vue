@@ -18,13 +18,18 @@
           <button
             class="codex-tab"
             :class="{ active: activeTab === 'lore' }"
-            @click="activeTab = 'lore'; selectedEnemy = null"
+            @click="activeTab = 'lore'; selectedEnemy = null; selectedAlly = null"
           >Lore Archives </button>
           <button
             class="codex-tab"
             :class="{ active: activeTab === 'enemies' }"
-            @click="activeTab = 'enemies'"
+            @click="activeTab = 'enemies'; selectedAlly = null"
           >Enemy Codex </button>
+          <button
+            class="codex-tab"
+            :class="{ active: activeTab === 'allies' }"
+            @click="activeTab = 'allies'; selectedEnemy = null"
+          >Ally Codex </button>
         </div>
       </div>
     </div>
@@ -161,6 +166,94 @@
       </div>
     </Transition>
 
+    <!-- ═══════════════ ALLY CODEX ═══════════════ -->
+<section v-show="activeTab === 'allies'" class="section">
+  <div class="container">
+    <p class="section-label">UES Intelligence</p>
+    <h2 class="section-title">Ally Codex</h2>
+    <p class="codex-intro">
+      Project: Evo fighter and strike-craft units. Select an entry for a full report. (WIP Check back soon!)
+    </p>
+
+    <div class="enemy-filters">
+      <button
+        v-for="tier in allyTierFilters"
+        :key="tier"
+        class="filter-btn"
+        :class="{ active: activeAllyTier === tier }"
+        @click="activeAllyTier = tier"
+      >{{ tier }}</button>
+    </div>
+
+    <div class="enemy-grid" :class="{ 'panel-open': selectedAlly }">
+      <button
+        v-for="ally in filteredAllies"
+        :key="ally.id"
+        class="enemy-card"
+        :class="{ selected: selectedAlly?.id === ally.id }"
+        @click="selectAlly(ally)"
+      >
+        <div class="enemy-card-img">
+          <img :src="ally.img" :alt="ally.name" />
+          <span class="enemy-tier-badge" :class="`ally-tier-${ally.tier.toLowerCase()}`">{{ ally.tier }}</span>
+        </div>
+        <div class="enemy-card-info">
+          <p class="enemy-name">{{ ally.name }}</p>
+          <p class="enemy-class">{{ ally.class }}</p>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ALLY DETAIL PANEL ═══════════════ -->
+<Transition name="panel">
+  <div v-if="selectedAlly && activeTab === 'allies'" class="enemy-panel-overlay">
+    <div class="enemy-panel">
+
+      <button class="panel-close" @click="selectedAlly = null">✕</button>
+
+      <div class="panel-header">
+        <div class="panel-img">
+          <img :src="selectedAlly.img" :alt="selectedAlly.name" />
+        </div>
+        <div class="panel-title-block">
+          <span class="enemy-tier-badge lg" :class="`ally-tier-${selectedAlly.tier.toLowerCase()}`">{{ selectedAlly.tier }}</span>
+          <h2 class="panel-name">{{ selectedAlly.name }}</h2>
+          <p class="panel-class">{{ selectedAlly.class }}</p>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-section-label">Stats</p>
+        <div class="stats-grid">
+          <div class="stat-row" v-for="stat in selectedAlly.stats" :key="stat.label">
+            <span class="stat-label">{{ stat.label }}</span>
+            <div class="stat-bar-wrap">
+              <div class="stat-bar" :style="{ width: stat.value + '%' }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-section-label">Combat Mechanics</p>
+        <ul class="mechanic-list">
+          <li v-for="m in selectedAlly.mechanics" :key="m" class="mechanic-item">
+            <span class="mechanic-dot"></span>{{ m }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="panel-section">
+        <p class="panel-section-label">Intelligence Report</p>
+        <p class="panel-lore">{{ selectedAlly.lore }}</p>
+      </div>
+
+    </div>
+  </div>
+</Transition>
+
   </main>
 </template>
 
@@ -249,6 +342,7 @@ const loreEntries = [
 // ── Enemies ────────────────────────────────────────────────
 const activeTier    = ref('All')
 const selectedEnemy = ref(null)
+
 
 const tierFilters = ['All', 'Light', 'Medium', 'Heavy']
 
@@ -387,6 +481,174 @@ const filteredEnemies = computed(() =>
 
 function selectEnemy(enemy) {
   selectedEnemy.value = selectedEnemy.value?.id === enemy.id ? null : enemy
+}
+
+const activeAllyTier = ref('All')
+const selectedAlly   = ref(null)
+
+const allyTierFilters = ['All', 'Fighter', 'Strike']
+
+const allies = [
+  {
+    id: 'ravenor',
+    name: 'Ravenor',
+    class: 'Kinetic Fighter',
+    tier: 'Fighter',
+    img: new URL('/img/allies/EvoFighter.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',      value: 100 },
+      { label: 'Armor',    value: 33 },
+      { label: 'Primary Damage',   value: 50 },
+      { label: 'Secondary Damage',   value: 100 },
+      { label: 'Primary Firerate', value: 50 },
+      { label: 'Secondary Firerate', value: 18 },
+      { label: 'Speed',   value: 100 },
+    ],
+    mechanics: [
+     
+    ],
+    lore: 'Lore to be added'
+  },
+  {
+    id: 'talos',
+    name: 'Talos',
+    class: 'Jolt Fighter',
+    tier: 'Fighter',
+    img: new URL('/img/allies/VISAR.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',       value: 50 },
+      { label: 'Armor',   value: 100 },
+      { label: 'Primary Damage',   value: 75 },
+      { label: 'Secondary Damage',   value: 13 },
+      { label: 'Primary Firerate',value: 100 },
+      { label: 'Secondary Firerate', value: 100 },
+      { label: 'Speed',   value: 100 },
+    ],
+    mechanics: [
+      
+    ],
+    lore: 'Lore to be added'
+  },
+  {
+    id: 'emperor',
+    name: 'Emperor',
+    class: 'Scorch Fighter',
+    tier: 'Fighter',
+    img: new URL('/img/allies/UESGunship.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',      value: 100 },
+      { label: 'Armor',   value: 100 },
+      { label: 'Primary Damage',  value: 100 },
+      { label: 'Secondary Damage',   value: 13 },
+      { label: 'Primary Firerate', value: 75 },
+      { label: 'Secondary Firerate', value: 90 },
+      { label: 'Speed',    value: 50 },
+    ],
+    mechanics: [
+
+    ],
+    lore: 'Lore to be added'
+  },
+  {
+    id: 'chaos',
+    name: 'Chaos',
+    class: 'Frost Fighter',
+    tier: 'Fighter',
+    img: new URL('/img/allies/UESInterceptor.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',       value: 50 },
+      { label: 'Armor',    value: 33 },
+      { label: 'Primary Damage',   value: 25 },
+      { label: 'Secondary Damage',   value: 75 },
+      { label: 'Primary Firerate', value: 25 },
+      { label: 'Secondary Firerate', value: 25 },
+      { label: 'Speed',    value: 50 },
+    ],
+    mechanics: [
+
+    ],
+    lore: 'Lore to be added'
+  },
+  {
+    id: 'stryk',
+    name: 'Stryk',
+    class: 'Basic Strike-Craft',
+    tier: 'Strike',
+    img: new URL('/img/allies/UESInterceptor.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',        value: 0 },
+      { label: 'Armor',     value: 0 },
+      { label: 'Damage',   value: 45 },
+      { label: 'Firerate', value: 80 },
+      { label: 'Speed',    value: 90 },
+    ],
+    mechanics: [
+
+    ],
+    lore: 'Lore to be added'
+  },
+  {
+    id: 'aethr',
+    name: 'Aethr',
+    class: 'Beam Strike-Craft',
+    tier: 'Strike',
+    img: new URL('/img/allies/UESInterceptor.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',        value: 0 },
+      { label: 'Armor',     value: 0 },
+      { label: 'Damage',   value: 45 },
+      { label: 'Firerate', value: 80 },
+      { label: 'Speed',    value: 90 },
+    ],
+    mechanics: [
+
+    ],
+    lore: 'Lore to be added'
+  },
+  {
+    id: 'vulkr',
+    name: 'Vulkr',
+    class: 'Blast Strike-Craft',
+    tier: 'Strike',
+    img: new URL('/img/allies/UESInterceptor.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',        value: 0 },
+      { label: 'Armor',     value: 0 },
+      { label: 'Damage',   value: 45 },
+      { label: 'Firerate', value: 80 },
+      { label: 'Speed',    value: 90 },
+    ],
+    mechanics: [
+
+    ],
+    lore: 'Lore to be added'
+  },
+   {
+    id: 'wardn',
+    name: 'Wardn',
+    class: 'Support Strike-Craft',
+    tier: 'Strike',
+    img: new URL('/img/allies/UESInterceptor.png', import.meta.url).href,
+    stats: [
+      { label: 'HP',       value: 25 },
+      { label: 'Armor',     value: 0 },
+      { label: 'Damage',   value: 45 },
+      { label: 'Firerate', value: 80 },
+      { label: 'Speed',    value: 90 },
+    ],
+    mechanics: [
+
+    ],
+    lore: 'Lore to be added'
+  }
+]
+
+const filteredAllies = computed(() =>
+  activeAllyTier.value === 'All' ? allies : allies.filter(a => a.tier === activeAllyTier.value)
+)
+
+function selectAlly(ally) {
+  selectedAlly.value = selectedAlly.value?.id === ally.id ? null : ally
 }
 </script>
 
@@ -561,6 +823,11 @@ position: absolute;
 .accordion-enter-from,
 .accordion-leave-to { opacity: 0; transform: translateY(-6px); }
 
+
+/* Ally tier badges */
+.ally-tier-fighter  { background: rgba(123, 255, 0, 0.15); color: #fbff00; }
+.ally-tier-strike  { background: rgba(255, 255, 255, 0.15);  color: #ffffff; }
+
 /* ── Enemy Filters ─────────────────────────────────────────── */
 .enemy-filters {
   display: flex;
@@ -635,6 +902,7 @@ position: absolute;
   position: static;
   font-size: 0.72rem;
   margin-bottom: 0.35rem;
+  margin-right: 10rem;
   display: inline-block;
 }
 .tier-light  { background: rgba(130,130,130,0.2); color: #aaa; }

@@ -103,6 +103,7 @@
     </section>
 
     <!-- ═══════════════ CONTACT ═══════════════ -->
+     
     <section id="contact" class="section contact-section">
       <div class="container">
         <div class="contact-inner">
@@ -137,7 +138,6 @@
 </template>
 
 <script setup>
-
 const skills = [
   {  name: 'B.S. Computer Science',  category: 'Education' },
   {  name: 'ITIL 4 Certified',      category: 'Certification' },
