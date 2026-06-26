@@ -98,6 +98,32 @@
 
     <div class="container"><div class="divider"></div></div>
 
+  <div class="carousel-container">
+    <!-- Slides -->
+    <div class="carousel-track" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+          <div v-for="(fig, index) in minifigs"
+                :key="index" class="carousel-slide">
+        <img :src="fig.src" :alt="fig.name" />
+        <div class="text">Caption Text</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="prev" @click="prevSlide">◀</button>
+    <button class="next" @click="nextSlide">▶</button>
+
+    <!-- Indicators -->
+    <div class="indicators">
+      <span 
+        v-for="(fig, index) in minifigs" 
+        :key="index" 
+        :class="{ active: index === currentIndex }" 
+        @click="goToSlide(index)"
+      ></span>
+    </div>
+  </div>
+
+
     <!-- ═══════════════ MINIFIGS ═══════════════ -->
     <section class="section">
       <div class="container">
@@ -188,9 +214,80 @@ const minifigs = [
 ]
 
 function openLightbox(photo) { lightbox.value = photo }
+
+const currentIndex = ref(0);
+
+const nextSlide = () => {
+  currentIndex.value = (currentIndex.value + 1) % minifigs.length;
+};
+
+const prevSlide = () => {
+  currentIndex.value = (currentIndex.value - 1 + minifigs.length) % minifigs.length;
+};
+
+const goToSlide = (index) => {
+  currentIndex.value = index;
+};
 </script>
 
 <style scoped>
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+}
+
+.carousel-slide img {
+  width: 75%;
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.indicators span {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.indicators span.active {
+  background: white;
+}
 /* ── Page Hero ─────────────────────────────────────────────── */
 .hero-eyebrow {
   font-family: 'Rajdhani', sans-serif;
