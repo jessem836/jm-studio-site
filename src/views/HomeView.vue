@@ -25,10 +25,10 @@
              So far, I am certified in LPI Linux and ITIL 4. My next goal is to become CompTIA Security+ certified. I am also a self-taught 
              game developer, creating Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
              <br><br>
-             Currently, I am employed at ThredUP as an IT Tech Support Technician, 
+             Currently, I am employed at ThredUP as an IT Support Technician, 
              handling tickets submitted by warehouse associates and managers, as well as ensuring all applications and computers are up to date and running.
             <br><br>
-             I am passionate about learning and growing in the IT and game development fields, and I am excited to share my journey with you through this site.
+             Take a look around to see my projects, skills, or get in touch!
             </p>
           </div>
           <div class="about-aside">
