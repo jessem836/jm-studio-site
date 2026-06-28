@@ -54,7 +54,7 @@
 
     <div class="container"><div class="divider"></div></div>
 
-    <!-- ═══════════════ NATIONAL PARKS ═══════════════ -->
+<!-- ═══════════════ NATIONAL PARKS ═══════════════ -->
     <section class="section">
       <div class="container">
         <p class="section-label">Photography</p>
@@ -98,12 +98,15 @@
 
     <div class="container"><div class="divider"></div></div>
 
+<section onload="autoPlay()">
   <div class="carousel-container">
     <!-- Slides -->
-    <div class="carousel-track" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+    <div class="carousel-track">
           <div v-for="(fig, index) in minifigs"
-                :key="index" class="carousel-slide">
-        <img :src="fig.src" :alt="fig.name" />
+                :key="index" class="carousel-slide"
+                :class="{ active: index === currentIndex }">
+                
+        <img :src="fig.src" :alt="fig.name" style="background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 25%)" />
         <div class="text">Caption Text</div>
       </div>
     </div>
@@ -122,7 +125,7 @@
       ></span>
     </div>
   </div>
-
+</section>
 
     <!-- ═══════════════ MINIFIGS ═══════════════ -->
     <section class="section">
@@ -159,7 +162,7 @@
         <div class="lightbox-inner" @click.stop>
           <div class="lightbox-img-wrap">
             <div class="lb-placeholder">
-              <img :src="lightbox.src" :alt="lightbox.title" class="photo-placeholder" />
+              <img :src="lightbox.src" :alt="lightbox.title" class="photo-placeholder" />n
               <p>{{ lightbox.title }}</p>
               <p style="font-size:0.8rem;color:var(--text-dim);">{{ lightbox.park }}</p>
             </div>
@@ -215,7 +218,7 @@ const minifigs = [
 
 function openLightbox(photo) { lightbox.value = photo }
 
-const currentIndex = ref(0);
+const currentIndex = ref(-1);
 
 const nextSlide = () => {
   currentIndex.value = (currentIndex.value + 1) % minifigs.length;
@@ -228,45 +231,95 @@ const prevSlide = () => {
 const goToSlide = (index) => {
   currentIndex.value = index;
 };
+
+autoPlay();
+
+function autoPlay() {
+  nextSlide();
+  setTimeout(autoPlay, 5000);
+}
 </script>
 
 <style scoped>
+.text {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  
+  color: white;
+  font-size: 16px;
+  font-weight: 700px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
 .carousel-container {
   position: relative;
   width: 100%;
   max-width: 800px;
   overflow: hidden;
   margin: 0 auto;
+  aspect-ratio: 4/3; /* Ensures container has a height when slides are absolute */
 }
 
 .carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .carousel-slide {
-  min-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  z-index: 1;
+}
+
+/* The active slide fades in smoothly */
+.carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
 }
 
 .carousel-slide img {
-  width: 75%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps image looking great inside fixed frame */
   display: block;
-  margin: 0 auto;
 }
 
-button {
+.prev { 
+  font-size: 16px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
+  left: 10px; 
+  z-index: 10;
 }
-
-.prev { left: 10px; }
-.next { right: 10px; }
+.next { 
+  font-size: 16px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;right: 10px; 
+  z-index: 10;
+}
 
 .indicators {
   position: absolute;
@@ -275,6 +328,7 @@ button {
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
+  z-index: 10;
 }
 
 .indicators span {
