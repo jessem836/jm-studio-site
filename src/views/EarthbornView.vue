@@ -35,6 +35,8 @@
       </div>
     </section>
 
+    <div class="container"><div class="divider"></div></div>
+    
     <!-- ═══════════════ MECHANICS ═══════════════ -->
     <section class="section">
       <div class="container">
@@ -78,20 +80,44 @@
       </div>
     </section>
 
+    <div class="container"><div class="divider"></div></div>
     <!-- ═══════════════ Screenshots ═══════════════ -->
     <section class="section eb-sc-section">
       <div class="container">
         <p class="section-label">Screenshots</p>
         <h2 class="section-title">Images for Dev Notes</h2>
         <p class="dev-intro">
-          Screenshots from each Dev Note, with the most recent at the top.
+          Screenshots from each Dev Note.
         </p>
-        <div class="sc-chips">
-          <p class="devnotes-placeholder">Command Center for Achievements and the Shop</p>
-          <img src="/img/DevImg_2.jpg" alt="Dev Note 2">
-          <p class="devnotes-placeholder">Solar Hazard Environment</p>
-          <img src="/img/DevImg_1.jpg" alt="Dev Note 1">
-        </div>
+        
+<section onload="autoPlay()" style="margin-top: 1.5rem;">
+          <div class="carousel-container">
+            <!-- Slides -->
+            <div class="carousel-track">
+                  <div v-for="(sc, index) in screenshots"
+                        :key="index" class="carousel-slide"
+                        :class="{ active: index === currentIndex }">
+                        
+                <img :src="sc.src" :alt="sc.title"/>
+                <div class="text">{{ sc.title }}</div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <button class="arrows" style = "left: 10px;" @click="prevSlide">◀</button>
+            <button class="arrows" style = "right: 10px; "@click="nextSlide">▶</button>
+
+            <!-- Indicators -->
+            <div class="indicators">
+              <span 
+                v-for="(sc, index) in screenshots" 
+                :key="index" 
+                :class="{ active: index === currentIndex }" 
+                @click="goToSlide(index)"
+              ></span>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -99,6 +125,8 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+
 const mechanics = [
   {
     title: 'Arcade Combat',
@@ -135,9 +163,138 @@ const devNotes = [
     body: 'Following inspiration from the original Earthborn Evolution, https://www.construct.net/en/free-online-games/earthborn-evolution-1164/play, development for its remake / sequel  has begun under Hoots Games.', 
   }
 ]
+
+const screenshots = [
+  { title: 'Solar Hazard',            src: new URL('/img/dev/DevImg_1.jpg', import.meta.url).href },
+  { title: 'Command Center',          src: new URL('/img/dev/DevImg_2.jpg', import.meta.url).href },
+]
+
+const currentIndex = ref(-1);
+
+const nextSlide = () => {
+  currentIndex.value = (currentIndex.value + 1) % screenshots.length;
+};
+
+const prevSlide = () => {
+  currentIndex.value = (currentIndex.value - 1 + screenshots.length) % screenshots.length;
+};
+
+const goToSlide = (index) => {
+  currentIndex.value = index;
+};
+
+autoPlay();
+
+function autoPlay() {
+  nextSlide();
+  setTimeout(autoPlay, 3000);
+}
 </script>
 
 <style scoped>
+.text {
+  font-size: 17px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2.25rem;
+  background: linear-gradient(to top, rgba(7,9,13,0.9), transparent);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  color: var(--text);
+}
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  border: 1px solid var(--border);
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.arrows { 
+  font-size: 16px; 
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrows:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: -1px -1px 0 var(--accent), 1px -1px 0 var(--accent), -1px 1px 0 var(--accent), 1px 1px 0 var(--accent);  
+}
+
+.indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicators span {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.indicators span.active {
+  background: white;
+}
+
+.indicators span:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 .previews-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -8,7 +8,7 @@
         <h1 class="ph-title">Jesse Mota</h1>
         <p class="ph-sub">Game Developer&nbsp;&nbsp;·&nbsp;&nbsp;IT&nbsp;&nbsp;·&nbsp;&nbsp;Student</p>
         <p class="hero-body">
-          An aspiring game developer and student of computer science, trying to break into the IT industry and share my journey along the way.
+          A solo indie game developer on the side and aspirant IT professional. Currently pursuing a B.S. in Computer Science at Western Governors University, while working as an IT Support Technician at ThredUP.
         </p>
       </div>
     </section>
@@ -53,6 +53,8 @@
       </div>
     </section>
 
+    <div class="container"><div class="divider"></div></div>
+    
     <!-- ═══════════════ SKILLS ═══════════════ -->
     <section class="section skills-section">
       <div class="container">
@@ -70,6 +72,7 @@
       </div>
     </section>
 
+    <div class="container"><div class="divider"></div></div>
     <!-- ═══════════════ PAGE PREVIEWS ═══════════════ -->
     <section class="section previews-section">
       <div class="container">
@@ -103,7 +106,7 @@
     </section>
 
     <!-- ═══════════════ CONTACT ═══════════════ -->
-     
+    <div class="container"><div class="divider"></div></div>
     <section id="contact" class="section contact-section">
       <div class="container">
         <div class="contact-inner">

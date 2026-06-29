@@ -98,34 +98,6 @@
 
     <div class="container"><div class="divider"></div></div>
 
-<section onload="autoPlay()">
-  <div class="carousel-container">
-    <!-- Slides -->
-    <div class="carousel-track">
-          <div v-for="(fig, index) in minifigs"
-                :key="index" class="carousel-slide"
-                :class="{ active: index === currentIndex }">
-                
-        <img :src="fig.src" :alt="fig.name" style="background-image: linear-gradient(to top, #07090d 0%, rgba(255,255,255,0) 25%)" />
-        <div class="text">Caption Text</div>
-      </div>
-    </div>
-
-    <!-- Controls -->
-    <button class="prev" @click="prevSlide">◀</button>
-    <button class="next" @click="nextSlide">▶</button>
-
-    <!-- Indicators -->
-    <div class="indicators">
-      <span 
-        v-for="(fig, index) in minifigs" 
-        :key="index" 
-        :class="{ active: index === currentIndex }" 
-        @click="goToSlide(index)"
-      ></span>
-    </div>
-  </div>
-</section>
 
     <!-- ═══════════════ MINIFIGS ═══════════════ -->
     <section class="section">
@@ -135,24 +107,37 @@
         <p class="gallery-intro">
           A small selection of painted minifigs.
         </p>
-        <div class="photo-grid minifig-grid">
-          <div
-            v-for="(fig, i) in minifigs"
-            :key="i"
-            class="photo-card"
-          >
-            <div class="photo-placeholder">
-              <img :src="fig.src" :alt="fig.name" class="photo-placeholder" />
+        <p class="photo-note">
+          More on <a href="https://www.instagram.com/hootspaint/" target="_blank">Instagram!</a>
+        </p>
+        <section onload="autoPlay()" style="margin-top: 1.5rem;">
+          <div class="carousel-container">
+            <!-- Slides -->
+            <div class="carousel-track">
+                  <div v-for="(fig, index) in minifigs"
+                        :key="index" class="carousel-slide"
+                        :class="{ active: index === currentIndex }">
+                        
+                <img :src="fig.src" :alt="fig.name"/>
+                <div class="text">{{ fig.title }}</div>
+              </div>
             </div>
-            <div class="photo-overlay">
-              <span class="photo-name">{{ fig.name }}</span>
-              <span class="photo-park">{{ fig.theme }}</span>
+
+            <!-- Controls -->
+            <button class="arrows" style = "left: 10px;" @click="prevSlide">◀</button>
+            <button class="arrows" style = "right: 10px; "@click="nextSlide">▶</button>
+
+            <!-- Indicators -->
+            <div class="indicators">
+              <span 
+                v-for="(fig, index) in minifigs" 
+                :key="index" 
+                :class="{ active: index === currentIndex }" 
+                @click="goToSlide(index)"
+              ></span>
             </div>
           </div>
-            <p class="photo-note">
-            More on <a href="https://www.instagram.com/hootspaint/" target="_blank">Instagram!</a>
-            </p>
-        </div>
+        </section>
       </div>
     </section>
 
@@ -162,7 +147,7 @@
         <div class="lightbox-inner" @click.stop>
           <div class="lightbox-img-wrap">
             <div class="lb-placeholder">
-              <img :src="lightbox.src" :alt="lightbox.title" class="photo-placeholder" />n
+              <img :src="lightbox.src" :alt="lightbox.title" class="photo-placeholder" />
               <p>{{ lightbox.title }}</p>
               <p style="font-size:0.8rem;color:var(--text-dim);">{{ lightbox.park }}</p>
             </div>
@@ -210,10 +195,11 @@ const filteredParks = computed(() =>
 )
 
 const minifigs = [
-  { name: '1st Claw',                     theme: 'Night Lords',               src: new URL('/img/figures/NL_3.jpg', import.meta.url).href },
-  { name: 'Heavy Lokhust Destroyer',      theme: 'Necrons',                   src: new URL('/img/figures/Necron_1.jpg', import.meta.url).href },
-  { name: 'Talos Valcoran',               theme: 'Night Lords',               src: new URL('/img/figures/Talos_1.jpg', import.meta.url).href },
-  { name: 'Exultia Skirmish',             theme: 'Necron & Night Lords',      src: new URL('/img/figures/NL_2.jpg', import.meta.url).href },
+  { title: 'Exultia Skirmish',                   src: new URL('/img/figures/NL_2.jpg', import.meta.url).href },
+  { title: '1st Claw',                           src: new URL('/img/figures/NL_3.jpg', import.meta.url).href },
+  { title: 'Heavy Lokhust Destroyer',            src: new URL('/img/figures/Necron_1.jpg', import.meta.url).href },
+  { title: '1st Claw',                           src: new URL('/img/figures/NL_3.jpg', import.meta.url).href },
+  { title: 'Talos Valcoran',                     src: new URL('/img/figures/Talos_1.jpg', import.meta.url).href },
 ]
 
 function openLightbox(photo) { lightbox.value = photo }
@@ -236,29 +222,36 @@ autoPlay();
 
 function autoPlay() {
   nextSlide();
-  setTimeout(autoPlay, 5000);
+  setTimeout(autoPlay, 3000);
 }
 </script>
 
 <style scoped>
 .text {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  
-  color: white;
-  font-size: 16px;
-  font-weight: 700px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 20px;
+  font-size: 17px;
   width: 100%;
   text-align: center;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2.25rem;
+  background: linear-gradient(to top, rgba(7,9,13,0.9), transparent);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  color: var(--text);
 }
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   overflow: hidden;
+  border-radius: var(--radius);
   margin: 0 auto;
-  aspect-ratio: 4/3; /* Ensures container has a height when slides are absolute */
+  aspect-ratio: 4/3;
+  border: 1px solid var(--border);
 }
 
 .carousel-track {
@@ -279,7 +272,6 @@ function autoPlay() {
   z-index: 1;
 }
 
-/* The active slide fades in smoothly */
 .carousel-slide.active {
   opacity: 1;
   visibility: visible;
@@ -289,36 +281,25 @@ function autoPlay() {
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Keeps image looking great inside fixed frame */
+  object-fit: cover;
   display: block;
 }
 
-.prev { 
-  font-size: 16px;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  
+.arrows { 
+  font-size: 16px; 
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0);
   color: white;
   border: none;
-  padding: 10px;
   cursor: pointer;
-  left: 10px; 
   z-index: 10;
 }
-.next { 
-  font-size: 16px;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;right: 10px; 
-  z-index: 10;
+
+.arrows:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: -1px -1px 0 var(--accent), 1px -1px 0 var(--accent), -1px 1px 0 var(--accent), 1px 1px 0 var(--accent);  
 }
 
 .indicators {
@@ -341,6 +322,12 @@ function autoPlay() {
 
 .indicators span.active {
   background: white;
+}
+
+.indicators span:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--accent);
+  transform: translateY(-1px);
 }
 /* ── Page Hero ─────────────────────────────────────────────── */
 .hero-eyebrow {
@@ -389,7 +376,7 @@ function autoPlay() {
   gap: 3rem;
   margin-top: 2.5rem;
 }
-.about-block {}
+
 .about-block-title {
   font-size: 1.15rem;
   font-weight: 600;
@@ -456,9 +443,7 @@ function autoPlay() {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1rem;
 }
-.minifig-grid {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
+
 .photo-card {
   position: relative;
   aspect-ratio: 4/3;
@@ -546,7 +531,7 @@ function autoPlay() {
 }
 .lightbox-inner {
   position: relative;
-  max-width: 875px;
+  max-width: 900px;
   width: 100%;
 }
 .lightbox-img-wrap {
@@ -556,12 +541,11 @@ function autoPlay() {
 }
 .lb-placeholder {
   aspect-ratio: 16/9;
-  background: var(--bg-elevated);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.33rem;
   color: var(--text-muted);
 }
 .lb-close {
