@@ -22,7 +22,7 @@
             <h2 class="section-title">Who I Am</h2>
             <p class="about-body">
              I am currently a student at Western Governors University, pursuing a bachelor's degree in Computer Science. 
-             So far, I am certified in LPI Linux and ITIL 4. My next goal is to become CompTIA Security+ certified. I am also a self-taught 
+             So far, I am certified in LPI Linux and ITIL 4. My next goal is to become CompTIA Security+. I am also a self-taught 
              game developer, creating Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
              <br><br>
              Currently, I am employed at ThredUP as an IT Support Technician, 
@@ -39,8 +39,8 @@
               </div>
               <div class="divider" style="margin: 1.25rem 0;"></div>
               <div class="stat">
-                <span class="stat-num">UE5</span>
-                <span class="stat-label">Primary Game Engine</span>
+                <span class="stat-num">2</span>
+                <span class="stat-label">IT Certifications</span>
               </div>
               <div class="divider" style="margin: 1.25rem 0;"></div>
               <div class="stat">
@@ -62,7 +62,6 @@
         <h2 class="section-title">Skills & Certs</h2>
         <div class="skills-grid">
           <div v-for="skill in skills" :key="skill.name" class="skill-card">
-            <span class="skill-icon">{{ skill.icon }}</span>
             <div>
               <p class="skill-name">{{ skill.name }}</p>
               <p class="skill-cat">{{ skill.category }}</p>
@@ -146,10 +145,9 @@ const skills = [
   {  name: 'ITIL 4 Certified',      category: 'Certification' },
   {  name: 'LPI Linux Certified',   category: 'Certification' },
   {  name: 'Springboot, C++, Python',       category: 'Backend' },
+  {  name: 'Vue / Vite, HTML, CSS',             category: 'Frontend' },
+  {  name: 'Jira, Snipe-IT, Jamf',          category: 'IT Systems' },
   {  name: 'Unreal Engine 5',         category: 'Game Engine' },
-  {  name: 'Vue.js, HTML, CSS',             category: 'Frontend' },
-  {  name: 'IT Tech Support',        category: 'Experience' },
-  {  name: 'Ticket Systems, A.I.',          category: 'Systems' },
 ]
 </script>
 

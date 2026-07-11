@@ -165,8 +165,8 @@ const devNotes = [
 ]
 
 const screenshots = [
-  { title: 'Solar Hazard',            src: new URL('/img/dev/DevImg_1.jpg', import.meta.url).href },
   { title: 'Command Center',          src: new URL('/img/dev/DevImg_2.jpg', import.meta.url).href },
+  { title: 'Solar Hazard',            src: new URL('/img/dev/DevImg_1.jpg', import.meta.url).href }
 ]
 
 const currentIndex = ref(-1);
@@ -187,7 +187,7 @@ autoPlay();
 
 function autoPlay() {
   nextSlide();
-  setTimeout(autoPlay, 3000);
+  setTimeout(autoPlay, 4000);
 }
 </script>
 

@@ -198,7 +198,6 @@ const minifigs = [
   { title: 'Exultia Skirmish',                   src: new URL('/img/figures/NL_2.jpg', import.meta.url).href },
   { title: '1st Claw',                           src: new URL('/img/figures/NL_3.jpg', import.meta.url).href },
   { title: 'Heavy Lokhust Destroyer',            src: new URL('/img/figures/Necron_1.jpg', import.meta.url).href },
-  { title: '1st Claw',                           src: new URL('/img/figures/NL_3.jpg', import.meta.url).href },
   { title: 'Talos Valcoran',                     src: new URL('/img/figures/Talos_1.jpg', import.meta.url).href },
 ]
 
@@ -222,7 +221,7 @@ autoPlay();
 
 function autoPlay() {
   nextSlide();
-  setTimeout(autoPlay, 3000);
+  setTimeout(autoPlay, 4000);
 }
 </script>
 
