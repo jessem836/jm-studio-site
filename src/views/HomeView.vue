@@ -143,6 +143,7 @@ const skills = [
   {  name: 'Vue / Vite, HTML, CSS',             category: 'Frontend' },
   {  name: 'Jira, Snipe-IT, Jamf',          category: 'IT Systems' },
   {  name: 'Unreal Engine 5',         category: 'Game Engine' },
+  {  name: 'Git, GitHub, GitLab',      category: 'Version Control' },
 ]
 </script>
 
