@@ -8,7 +8,6 @@
   --border-mid:  #2a3550;
   --accent:        #2b96ff;
   --accent-dim:    rgba(43, 150, 255, 0.1);
-  --accent-glow:   rgba(43, 150, 255, 0.3);
   --accent-bright: #5aadff;
   --text:        #d8e0f0;
   --text-muted:  #8892aa;
@@ -54,26 +53,6 @@ ul { list-style: none; }
 /* ── Sections ─────────────────────────────────────────────── */
 .section { padding: 6rem 0; }
 
-.section-label {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.8rem;
-}
-.section-label::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-}
-
 .section-title {
   font-size: clamp(2rem, 4.5vw, 3.2rem);
   font-weight: 700;
@@ -104,7 +83,7 @@ ul { list-style: none; }
 .btn-primary:hover {
   background: var(--accent-bright);
   box-shadow: 0 4px 24px var(--accent-glow);
-  color: #ffffff;
+
 }
 .btn-ghost {
   background: transparent;

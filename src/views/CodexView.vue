@@ -5,7 +5,6 @@
     <section class="codex-hero">
       <div class="codex-hero-grid"></div>
       <div class="container codex-hero-content">
-        <p class="section-label">Earthborn Evo</p>
         <h1 class="codex-title">CODEX</h1>
         <p class="codex-sub">Lore Archives &amp; Enemy Intelligence</p>
       </div>
@@ -37,7 +36,6 @@
     <!-- ═══════════════ LORE ═══════════════ -->
     <section v-show="activeTab === 'lore'" class="section">
       <div class="container">
-        <p class="section-label">Lore &amp; World</p>
         <h2 class="section-title">Lore Archives</h2>
         <p class="codex-intro">
           Classified intel recovered from the UES. Expand each entry to read.
@@ -76,7 +74,6 @@
     <!-- ═══════════════ ENEMY CODEX ═══════════════ -->
     <section v-show="activeTab === 'enemies'" class="section">
       <div class="container">
-        <p class="section-label">Threat Assessment</p>
         <h2 class="section-title">Enemy Codex</h2>
         <p class="codex-intro">
           Catalogued Xiual units encountered in combat. Select an entry for a full report.
@@ -169,7 +166,6 @@
     <!-- ═══════════════ ALLY CODEX ═══════════════ -->
 <section v-show="activeTab === 'allies'" class="section">
   <div class="container">
-    <p class="section-label">UES Intelligence</p>
     <h2 class="section-title">Ally Codex</h2>
     <p class="codex-intro">
       Project: Evo fighter and strike-craft units. Select an entry for a full report. (WIP Check back soon!)

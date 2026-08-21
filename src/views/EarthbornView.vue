@@ -19,7 +19,6 @@
 
     <section class="section">
       <div class="container">
-        <p class="section-label">Lore</p>
         <h2 class="section-title">Earthborn Evo Codex</h2>
           
         <RouterLink to="/codex" class="preview-card preview-game">
@@ -40,7 +39,6 @@
     <!-- ═══════════════ MECHANICS ═══════════════ -->
     <section class="section">
       <div class="container">
-        <p class="section-label">Gameplay</p>
         <h2 class="section-title">Core Mechanics</h2>
         <div class="mechanics-grid">
           <div class="mechanic-card" v-for="m in mechanics" :key="m.title">
@@ -57,7 +55,6 @@
     <!-- ═══════════════ DEV NOTES ═══════════════ -->
     <section class="section">
       <div class="container">
-        <p class="section-label">Dev Blog</p>
         <h2 class="section-title">Dev Notes</h2>
         <p class="dev-intro">
           Progess updates as well as notes during development.
@@ -84,7 +81,6 @@
     <!-- ═══════════════ Screenshots ═══════════════ -->
     <section class="section eb-sc-section">
       <div class="container">
-        <p class="section-label">Screenshots</p>
         <h2 class="section-title">Images for Dev Notes</h2>
         <p class="dev-intro">
           Screenshots from each Dev Note.
@@ -144,6 +140,12 @@ const mechanics = [
 ]
 
 const devNotes = [
+  {
+    date: 'August 2026',
+    tag: 'Difficulty',
+    title: 'Threat Escalation and Difficulty',
+    body: 'Before loading into the game, you are prompted to select a rank: Ensing, Captain, or Admiral. Each rank increases the difficulty of the game and how fast the Threat Escalation Level (1-7) rises. The Threat Escalation Level increases the amount of bonuses enemies receive per round.'
+  },
  {
     date: 'June 2026',
     tag: 'Progression',
@@ -167,7 +169,8 @@ const devNotes = [
 const screenshots = [
   { title: 'Solar Hazard',            src: new URL('/img/dev/DevImg_1.jpg', import.meta.url).href },
   { title: 'Command Center',          src: new URL('/img/dev/DevImg_2.jpg', import.meta.url).href },
-]
+  { title: 'Difficulty',              src: new URL('/img/dev/DevImg_3.jpg', import.meta.url).href }
+];
 
 const currentIndex = ref(-1);
 

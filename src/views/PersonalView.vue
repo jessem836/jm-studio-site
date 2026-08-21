@@ -17,7 +17,6 @@
     <!-- ═══════════════ ABOUT ═══════════════ -->
     <section class="section">
       <div class="container">
-        <p class="section-label">personal</p>
         <h2 class="section-title">Hobbies</h2>
         <div class="about-extended">
           <div class="about-block">
@@ -57,7 +56,6 @@
 <!-- ═══════════════ NATIONAL PARKS ═══════════════ -->
     <section class="section">
       <div class="container">
-        <p class="section-label">Photography</p>
         <h2 class="section-title">National Parks</h2>
         <p class="gallery-intro">
           Highlights of my favorite pictures taken at various National Parks.
@@ -102,7 +100,6 @@
     <!-- ═══════════════ MINIFIGS ═══════════════ -->
     <section class="section">
       <div class="container">
-        <p class="section-label">Collection</p>
         <h2 class="section-title">Minifigs</h2>
         <p class="gallery-intro">
           A small selection of painted minifigs.

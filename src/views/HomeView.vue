@@ -6,9 +6,9 @@
       <div class="container ph-content">
         <p class="hero-eyebrow">Welcome to my site!</p>
         <h1 class="ph-title">Jesse Mota</h1>
-        <p class="ph-sub">Game Developer&nbsp;&nbsp;·&nbsp;&nbsp;IT&nbsp;&nbsp;·&nbsp;&nbsp;Student</p>
+        <p class="ph-sub">Game Developer&nbsp;&nbsp;·&nbsp;&nbsp;IT&nbsp;&nbsp;·&nbsp;&nbsp;B.S.C.S.</p>
         <p class="hero-body">
-          A solo indie game developer on the side and aspirant IT professional. Currently pursuing a B.S. in Computer Science at Western Governors University, while working as an IT Support Technician at ThredUP.
+          A solo indie game developer on the side and aspirant IT professional. Western Governors University alummni with a B.S. in Computer Science. Currently working as an IT Support Technician at ThredUP.
         </p>
       </div>
     </section>
@@ -18,12 +18,11 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-text">
-            <p class="section-label">About</p>
             <h2 class="section-title">Who I Am</h2>
             <p class="about-body">
-             I am currently a student at Western Governors University, pursuing a bachelor's degree in Computer Science. 
-             So far, I am certified in LPI Linux and ITIL 4. My next goal is to become CompTIA Security+ certified. I am also a self-taught 
-             game developer, creating Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
+             I currently possess a B.S. in Computer Science from Western Governors University and 2 certifications, ITIL 4 and LPI Linux.
+             My next goal is to become CompTIA Security+, A+, and Network+ certified and in the future, obtain my Master's degree.
+             I am also a self-taught game developer, creating Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
              <br><br>
              Currently, I am employed at ThredUP as an IT Support Technician, 
              handling tickets submitted by warehouse associates and managers, as well as ensuring all applications and computers are up to date and running.
@@ -52,13 +51,11 @@
         </div>
       </div>
     </section>
-
-    <div class="container"><div class="divider"></div></div>
     
     <!-- ═══════════════ SKILLS ═══════════════ -->
+    <div class="container"><div class="divider"></div></div>
     <section class="section skills-section">
       <div class="container">
-        <p class="section-label">Capabilities</p>
         <h2 class="section-title">Skills & Certs</h2>
         <div class="skills-grid">
           <div v-for="skill in skills" :key="skill.name" class="skill-card">
@@ -76,7 +73,6 @@
     <!-- ═══════════════ PAGE PREVIEWS ═══════════════ -->
     <section class="section previews-section">
       <div class="container">
-        <p class="section-label">Explore</p>
         <h2 class="section-title">What's Here</h2>
         <div class="previews-grid">
 
@@ -110,7 +106,6 @@
     <section id="contact" class="section contact-section">
       <div class="container">
         <div class="contact-inner">
-          <p class="section-label">Get In Touch</p>
           <h2 class="section-title">Contact</h2>
           <p class="contact-sub">
             Have a question or want to get in touch?
@@ -167,8 +162,8 @@ const skills = [
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
+  linear-gradient(rgba(28, 35, 54, 0.4) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(28, 35, 54, 0.4) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .ph-content { 
