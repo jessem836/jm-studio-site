@@ -6,7 +6,6 @@
       <div class="container ph-content">
         <p class="hero-eyebrow">Welcome to my site!</p>
         <h1 class="ph-title">Jesse Mota</h1>
-        <p class="ph-sub">Game Developer&nbsp;&nbsp;·&nbsp;&nbsp;IT&nbsp;&nbsp;·&nbsp;&nbsp;B.S.C.S.</p>
         <p class="hero-body">
           A solo indie game developer on the side and aspirant IT professional. Western Governors University alummni with a B.S. in Computer Science. Currently working as an IT Support Technician at ThredUP.
         </p>
@@ -18,10 +17,10 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-text">
-            <h2 class="section-title">Who I Am</h2>
+            <h2 class="section-title">About Me</h2>
             <p class="about-body">
-             I currently possess a B.S. in Computer Science from Western Governors University and 2 certifications, ITIL 4 and LPI Linux.
-             My next goal is to become CompTIA Security+, A+, and Network+ certified and in the future, obtain my Master's degree.
+             I currently possess a B.S. in Computer Science from Western Governors University and 3 certifications, ITIL 4, LPI Linux, and CompTIA A+.
+             My next goal is to become Security+ and Network+ certified and in the future, obtain my Master's degree.
              I am also a self-taught game developer, creating Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
              <br><br>
              Currently, I am employed at ThredUP as an IT Support Technician, 
@@ -33,18 +32,18 @@
           <div class="about-aside">
             <div class="about-stat-card">
               <div class="stat">
-                <span class="stat-num">1</span>
+                <span class="stat-num">1.5</span>
                 <span class="stat-label">Years in IT</span>
               </div>
               <div class="divider" style="margin: 1.25rem 0;"></div>
               <div class="stat">
-                <span class="stat-num">2</span>
+                <span class="stat-num">3</span>
                 <span class="stat-label">IT Certifications</span>
               </div>
               <div class="divider" style="margin: 1.25rem 0;"></div>
               <div class="stat">
                 <span class="stat-num">B.S.</span>
-                <span class="stat-label">Computer Science @ WGU</span>
+                <span class="stat-label">Computer Science</span>
               </div>
             </div>
           </div>
@@ -138,9 +137,9 @@
 const skills = [
   {  name: 'B.S. Computer Science',  category: 'Education' },
   {  name: 'ITIL 4 Certified',      category: 'Certification' },
-  {  name: 'LPI Linux Certified',   category: 'Certification' },
-  {  name: 'Springboot, C++, Python',       category: 'Backend' },
-  {  name: 'Vue / Vite, HTML, CSS',             category: 'Frontend' },
+  {  name: 'CompTIA A+',   category: 'Certification' },
+  {  name: 'Springboot, Node.js, Python',       category: 'Backend' },
+  {  name: 'Vue, HTML, CSS',             category: 'Frontend' },
   {  name: 'Jira, Snipe-IT, Jamf',          category: 'IT Systems' },
   {  name: 'Unreal Engine 5',         category: 'Game Engine' },
   {  name: 'Git, GitHub, GitLab',      category: 'Version Control' },
@@ -176,13 +175,6 @@ position: relative; z-index: 1; padding-top: 8rem;
   margin-bottom: 1rem;
   letter-spacing: -0.01em;
 }
-.ph-sub {
- font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
 
 .hero-eyebrow {
   font-family: 'Rajdhani', sans-serif;
@@ -208,7 +200,6 @@ position: relative; z-index: 1; padding-top: 8rem;
   line-height: 1.75;
   max-width: 560px;
 }
-.about-aside {}
 .about-stat-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -246,10 +237,6 @@ position: relative; z-index: 1; padding-top: 8rem;
   border-radius: var(--radius);
   padding: 1.1rem 1.25rem;
   transition: all 0.2s ease;
-}
-.skill-card:hover {
-  border-color: var(--accent);
-  background: var(--bg-elevated);
 }
 .skill-icon { font-size: 1.4rem; flex-shrink: 0; }
 .skill-name {

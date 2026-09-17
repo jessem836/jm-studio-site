@@ -121,8 +121,8 @@
             </div>
 
             <!-- Controls -->
-            <button class="arrows" style = "left: 10px;" @click="prevSlide">◀</button>
-            <button class="arrows" style = "right: 10px; "@click="nextSlide">▶</button>
+            <button class="arrows arrows-prev" aria-label="Previous minifig" @click="prevSlide">◀</button>
+            <button class="arrows arrows-next" aria-label="Next minifig" @click="nextSlide">▶</button>
 
             <!-- Indicators -->
             <div class="indicators">
@@ -158,7 +158,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { onBeforeUnmount, ref, computed } from 'vue'
 
 const activePark = ref('All')
 const lightbox   = ref(null)
@@ -200,26 +200,33 @@ const minifigs = [
 
 function openLightbox(photo) { lightbox.value = photo }
 
-const currentIndex = ref(-1);
+const currentIndex = ref(-1)
+let autoplayTimer
+
+function scheduleAutoPlay() {
+  clearTimeout(autoplayTimer)
+  autoplayTimer = setTimeout(() => {
+    nextSlide()
+  }, 4000)
+}
 
 const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % minifigs.length;
-};
+  currentIndex.value = (currentIndex.value + 1) % minifigs.length
+  scheduleAutoPlay()
+}
 
 const prevSlide = () => {
-  currentIndex.value = (currentIndex.value - 1 + minifigs.length) % minifigs.length;
-};
+  currentIndex.value = (currentIndex.value - 1 + minifigs.length) % minifigs.length
+  scheduleAutoPlay()
+}
 
 const goToSlide = (index) => {
-  currentIndex.value = index;
-};
-
-autoPlay();
-
-function autoPlay() {
-  nextSlide();
-  setTimeout(autoPlay, 4000);
+  currentIndex.value = index
+  scheduleAutoPlay()
 }
+
+nextSlide()
+onBeforeUnmount(() => clearTimeout(autoplayTimer))
 </script>
 
 <style scoped>
@@ -244,10 +251,16 @@ function autoPlay() {
   width: 100%;
   max-width: 600px;
   overflow: hidden;
+  background: var(--bg-surface);
   border-radius: var(--radius);
   margin: 0 auto;
   aspect-ratio: 4/3;
   border: 1px solid var(--border);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.carousel-container:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 0 28px var(--accent-dim), 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .carousel-track {
@@ -281,21 +294,37 @@ function autoPlay() {
   display: block;
 }
 
-.arrows { 
-  font-size: 16px; 
+.arrows {
   position: absolute;
   top: 50%;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0);
-  color: white;
-  border: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: rgba(18, 24, 38, 0.9);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius);
   cursor: pointer;
   z-index: 10;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.arrows-prev { left: 10px; }
+.arrows-next { right: 10px; }
+.arrows:hover {
+  color: var(--accent-bright);
+  background: var(--bg-elevated);
+  border-color: var(--accent);
 }
 
-.arrows:hover {
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: -1px -1px 0 var(--accent), 1px -1px 0 var(--accent), -1px 1px 0 var(--accent), 1px 1px 0 var(--accent);  
+.arrows:focus-visible,
+.indicators span:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 2px;
 }
 
 .indicators {
@@ -309,19 +338,22 @@ function autoPlay() {
 }
 
 .indicators span {
-  width: 12px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.5);
+  width: 8px;
+  height: 8px;
+  background: var(--text-dim);
+  border: 1px solid var(--border-mid);
   border-radius: 50%;
   cursor: pointer;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 
 .indicators span.active {
-  background: white;
+  background: var(--accent);
+  border-color: var(--accent-bright);
 }
 
 .indicators span:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--accent-bright);
   border-color: var(--accent);
   transform: translateY(-1px);
 }
