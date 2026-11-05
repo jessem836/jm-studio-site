@@ -7,7 +7,6 @@
       </div>
       <div class="container eb-hero-content">
         <h1 class="eb-title">EARTHBORN EVO</h1>
-        <p class="eb-tagline">Top-Down Arcade · Roguelike · Endless Combat · Sci-Fi</p>
         <p class="eb-desc">
           Humanity is fighting a war against the Xiual Mind, an ancient psychic xenos race. Take flight and collect powerful
           Shards, adapt your build each run, and push further towards the Conduit.
@@ -22,7 +21,6 @@
         <h2 class="section-title">Earthborn Evo Codex</h2>
           
         <RouterLink to="/codex" class="preview-card preview-game">
-            <div class="preview-tag">Archives and Enemy Codex</div>
             <h3 class="preview-title">The Codex</h3>
             <p class="preview-body">
               Explore the Codex, a compendium of lore entries, enemy profiles, and world-building details that expand on the Earthborn Evo universe. 
@@ -40,12 +38,17 @@
     <section class="section">
       <div class="container">
         <h2 class="section-title">Core Mechanics</h2>
-        <div class="mechanics-grid">
-          <div class="mechanic-card" v-for="m in mechanics" :key="m.title">
-            <span class="mech-icon">{{ m.icon }}</span>
-            <h3 class="mech-title">{{ m.title }}</h3>
-            <p class="mech-body">{{ m.body }}</p>
-          </div>
+        <div class="mechanics-showcase">
+          <article class="mechanic-row" v-for="m in mechanics" :key="m.title">
+            <div class="mech-copy">
+              <div class="mech-header">
+                <span class="mech-bullet"></span>
+                <span class="mech-icon">{{ m.icon }}</span>
+                <h3 class="mech-title">{{ m.title }}</h3>
+              </div>
+              <p class="mech-body">{{ m.body }}</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -72,7 +75,7 @@
 
         <p class="devnotes-placeholder">
           More dev notes coming soon. Follow along on
-          <a href="https://www.instagram.com/hoots.games/" target="_blank">Instagram via Hoots Games</a>.
+          <a href="https://www.instagram.com/jm.studios/" target="_blank">Instagram via JM Studios</a>.
         </p>
       </div>
     </section>
@@ -100,8 +103,8 @@
             </div>
 
             <!-- Controls -->
-            <button class="arrows arrows-prev" aria-label="Previous screenshot" @click="prevSlide">◀</button>
-            <button class="arrows arrows-next" aria-label="Next screenshot" @click="nextSlide">▶</button>
+            <button class="arrows arrows-prev" aria-label="Previous screenshot" @click="prevSlide"><</button>
+            <button class="arrows arrows-next" aria-label="Next screenshot" @click="nextSlide">></button>
 
             <!-- Indicators -->
             <div class="indicators">
@@ -125,16 +128,20 @@ import { onBeforeUnmount, ref, computed } from 'vue'
 
 const mechanics = [
   {
-    title: 'Arcade Combat',
-    body: 'Classic top-down shooter feel inspired by Space Invaders and Galaga, but with a twist. Race to destroy the Conduit or fight endlessly against the Xiual Mind.',
+    title: 'Arcade and Roguelike',
+    body: 'Inspired by games like Risk of Rain and classic top-down shooters like Space Invaders and Galaga. Fight endless waves of unique enemies and collect powerups. Between waves, or when dropped from an enemy, choose from randomized Shards that permanently modify your ship\'s stats and abilities. Be cautious, death is permanent.',
   },
   {
-    title: 'Roguelike System',
-    body: 'Between waves, or when dropped from an enemy, choose from randomized Shards that permanently modify your ship\'s stats and abilities. Be cautious, death is permanent.',
+    title: 'Stage Progression and Threat Escalation',
+    body: 'Each wave cycles through distinct stage environments with unique enemy types, envionmental hazards, and objectives. The longer you survive, the more difficult the game becomes. The Threat Escalation Level increases the amount of bonuses enemies receive per round and the amount of debuffs you recieve',
   },
   {
-    title: 'Stage Progression',
-    body: 'Each wave cycles through distinct stage environments with unique enemy types, envionmental hazards, and objectives.',
+    title: 'Meta Progression',
+    body: 'Earn Achievements to unlock Shards or use Somber, the currency dropped by enemies, to unlock new ships and shields to use in future runs.',
+  },
+  {
+    title: 'Customization',
+    body: 'Choose your loadout before each run. Select your ship, shield, and desired difficulty to create your own unique playstyle. Each ship and shield has its own unique stats and abilities. Experiment with different combinations to find the perfect setup for your playstyle.',
   }
 ]
 
@@ -362,14 +369,7 @@ onBeforeUnmount(() => clearTimeout(autoplayTimer))
   box-shadow: 0 12px 40px rgba(0,0,0,0.4);
 }
 .preview-card:hover::before { opacity: 1; }
-.preview-tag {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
+
 .preview-title {
   font-size: 1.8rem;
   font-weight: 700;
@@ -423,15 +423,6 @@ onBeforeUnmount(() => clearTimeout(autoplayTimer))
   text-shadow: 0 0 60px rgba(43,150,255,0.2);
 }
 
-.eb-tagline {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
 .eb-desc {
   max-width: 560px;
   font-size: 1rem;
@@ -445,29 +436,54 @@ onBeforeUnmount(() => clearTimeout(autoplayTimer))
 }
 
 /* ── Mechanics ─────────────────────────────────────────────── */
-.mechanics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.25rem;
+.mechanics-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   margin-top: 2.5rem;
 }
-.mechanic-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  transition: all 0.2s ease;
+.mechanic-row {
+  padding: 1.2rem 0;
 }
 
-.mech-icon { font-size: 1.8rem; display: block; margin-bottom: 1rem; }
+.mech-copy {
+  max-width: 760px;
+}
+.mech-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.mech-bullet {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.mech-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55rem;
+  color: var(--accent);
+  filter: drop-shadow(0 0 18px rgba(96, 167, 255, 0.35));
+}
 .mech-title {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 0.6rem;
+  margin: 0;
 }
-.mech-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+.mech-body {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
 
 /* ── Dev Notes ─────────────────────────────────────────────── */
 .dev-intro {

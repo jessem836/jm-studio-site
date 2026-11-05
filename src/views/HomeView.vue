@@ -7,7 +7,7 @@
         <p class="hero-eyebrow">Welcome to my site!</p>
         <h1 class="ph-title">Jesse Mota</h1>
         <p class="hero-body">
-          A solo indie game developer on the side and aspirant IT professional. Western Governors University alummni with a B.S. in Computer Science. Currently working as an IT Support Technician at ThredUP.
+          A Systems Analyst at HelloFresh and a self-taught game developer on the side. Western Governors University alumnus with a B.S. in Computer Science.
         </p>
       </div>
     </section>
@@ -19,12 +19,13 @@
           <div class="about-text">
             <h2 class="section-title">About Me</h2>
             <p class="about-body">
-             I currently possess a B.S. in Computer Science from Western Governors University and 3 certifications, ITIL 4, LPI Linux, and CompTIA A+.
-             My next goal is to become Security+ and Network+ certified and in the future, obtain my Master's degree.
+             I currently possess a B.S. in Computer Science from Western Governors University and 2 certifications, ITIL 4 and LPI Linux.
+             My next goal is to become Security+ or Network+ certified and in the future, obtain my Master's degree.
              I am also a self-taught game developer, creating Earthborn Evo, a top-down arcade roguelike in Unreal Engine 5. 
              <br><br>
-             Currently, I am employed at ThredUP as an IT Support Technician, 
-             handling tickets submitted by warehouse associates and managers, as well as ensuring all applications and computers are up to date and running.
+             Currently, I am employed at HelloFresh as a Systems Analyst, 
+             where I support and troubleshoot the warehouse and order-processing systems (WMS, WES, WCS) that run 24/7 fulfillment operations, 
+             while building reports and documentation that drive operational improvements.
             <br><br>
              Take a look around to see my projects, skills, or get in touch!
             </p>
@@ -33,34 +34,18 @@
             <div class="about-stat-card">
               <div class="stat">
                 <span class="stat-num">1.5</span>
-                <span class="stat-label">Years in IT</span>
+                <span class="stat-label">Years Experience</span>
               </div>
               <div class="divider" style="margin: 1.25rem 0;"></div>
               <div class="stat">
-                <span class="stat-num">3</span>
-                <span class="stat-label">IT Certifications</span>
+                <span class="stat-num">2</span>
+                <span class="stat-label">Certifications</span>
               </div>
               <div class="divider" style="margin: 1.25rem 0;"></div>
               <div class="stat">
                 <span class="stat-num">B.S.</span>
                 <span class="stat-label">Computer Science</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- ═══════════════ SKILLS ═══════════════ -->
-    <div class="container"><div class="divider"></div></div>
-    <section class="section skills-section">
-      <div class="container">
-        <h2 class="section-title">Skills & Certs</h2>
-        <div class="skills-grid">
-          <div v-for="skill in skills" :key="skill.name" class="skill-card">
-            <div>
-              <p class="skill-name">{{ skill.name }}</p>
-              <p class="skill-cat">{{ skill.category }}</p>
             </div>
           </div>
         </div>
@@ -75,7 +60,6 @@
         <div class="previews-grid">
 
           <RouterLink to="/earthborn" class="preview-card preview-game">
-            <div class="preview-tag">Game Dev</div>
             <h3 class="preview-title">Earthborn Evo</h3>
             <p class="preview-body">
               A top-down arcade roguelike — Galaga meets Risk of Rain.
@@ -86,7 +70,6 @@
           </RouterLink>
 
           <RouterLink to="/personal" class="preview-card preview-personal">
-            <div class="preview-tag">Personal</div>
             <h3 class="preview-title">About Me</h3>
             <p class="preview-body">
               National Parks photography, Warhammer 40K, and a
@@ -132,20 +115,6 @@
 
   </main>
 </template>
-
-<script setup>
-const skills = [
-  {  name: 'B.S. Computer Science',  category: 'Education' },
-  {  name: 'ITIL 4 Certified',      category: 'Certification' },
-  {  name: 'CompTIA A+',   category: 'Certification' },
-  {  name: 'Springboot, Node.js, Python',       category: 'Backend' },
-  {  name: 'Vue, HTML, CSS',             category: 'Frontend' },
-  {  name: 'Jira, Snipe-IT, Jamf',          category: 'IT Systems' },
-  {  name: 'Unreal Engine 5',         category: 'Game Engine' },
-  {  name: 'Git, GitHub, GitLab',      category: 'Version Control' },
-]
-</script>
-
 <style scoped>
 /* ── Hero ──────────────────────────────────────────────────── */
 .personal-hero {
@@ -221,38 +190,6 @@ position: relative; z-index: 1; padding-top: 8rem;
   color: var(--text-dim);
 }
 
-/* ── Skills ─────────────────────────────────────────────────── */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-top: 2.5rem;
-}
-.skill-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.1rem 1.25rem;
-  transition: all 0.2s ease;
-}
-.skill-icon { font-size: 1.4rem; flex-shrink: 0; }
-.skill-name {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text);
-}
-.skill-cat {
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-top: 1px;
-}
-
 /* ── Page Previews ──────────────────────────────────────────── */
 .previews-grid {
   display: grid;
@@ -288,14 +225,6 @@ position: relative; z-index: 1; padding-top: 8rem;
   box-shadow: 0 12px 40px rgba(0,0,0,0.4);
 }
 .preview-card:hover::before { opacity: 1; }
-.preview-tag {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
 .preview-title {
   font-size: 1.8rem;
   font-weight: 700;

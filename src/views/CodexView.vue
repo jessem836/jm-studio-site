@@ -6,7 +6,6 @@
       <div class="codex-hero-grid"></div>
       <div class="container codex-hero-content">
         <h1 class="codex-title">CODEX</h1>
-        <p class="codex-sub">Lore Archives &amp; Enemy Intelligence</p>
       </div>
     </section>
 
@@ -672,13 +671,6 @@ position: absolute;
   line-height: 1;
   margin: 0.4rem 0 0.5rem;
   text-shadow: 0 0 80px rgba(43,150,255,0.18);
-}
-.codex-sub {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-muted);
 }
 
 /* ── Tab Nav ───────────────────────────────────────────────── */

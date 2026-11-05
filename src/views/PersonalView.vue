@@ -8,7 +8,7 @@
         <p class="hero-eyebrow">More about me</p>
         <h1 class="ph-title">Personal</h1>
         <p class="hero-body">
-          A more personal look into my hobbies and interests outside of game development and IT. I am a metal music 
+          A more personal look into my hobbies and interests outside of game development and work. I am a metal music 
           enthusiast, music CD collector, national park explorer, and a minifig painter. I also have a soft spot for sci-fi or dark fantasy, both in books and games.
         </p>
       </div>
@@ -121,8 +121,8 @@
             </div>
 
             <!-- Controls -->
-            <button class="arrows arrows-prev" aria-label="Previous minifig" @click="prevSlide">◀</button>
-            <button class="arrows arrows-next" aria-label="Next minifig" @click="nextSlide">▶</button>
+            <button class="arrows arrows-prev" aria-label="Previous minifig" @click="prevSlide"><</button>
+            <button class="arrows arrows-next" aria-label="Next minifig" @click="nextSlide">></button>
 
             <!-- Indicators -->
             <div class="indicators">
